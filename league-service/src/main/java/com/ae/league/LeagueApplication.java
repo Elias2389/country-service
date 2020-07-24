@@ -1,13 +1,13 @@
-package com.ae.country;
+package com.ae.league;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CountryApplication {
+public class LeagueApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CountryApplication.class, args);
+		SpringApplication.run(LeagueApplication.class, args);
 	}
 
 }
