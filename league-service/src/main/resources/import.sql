@@ -1,0 +1,10 @@
+INSERT INTO countries (name) VALUES ('España')
+INSERT INTO countries (name) VALUES ('Holanda')
+INSERT INTO countries (name) VALUES ('Francia')
+INSERT INTO countries (name) VALUES ('Alemania')
+
+INSERT INTO cities (name, id_country) VALUES ('Madrid', 1)
+INSERT INTO cities (name, id_country) VALUES ('Barcelona', 1)
+INSERT INTO cities (name, id_country) VALUES ('Amsterdam', 2)
+INSERT INTO cities (name, id_country) VALUES ('Lyon', 3)
+INSERT INTO cities (name, id_country) VALUES ('Berlin', 4)
