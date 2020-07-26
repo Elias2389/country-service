@@ -23,7 +23,7 @@ public class City implements Serializable {
 
     private String name;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     @JoinColumn(name = "id_country")
     private Country country;
 }
