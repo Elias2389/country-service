@@ -20,7 +20,7 @@ public class Country implements Serializable {
 
     private String name;
 
-    private Set<String> city;
-
+    @OneToMany(mappedBy = "country", fetch = FetchType.LAZY)
+    private Set<City> city;
 
 }
