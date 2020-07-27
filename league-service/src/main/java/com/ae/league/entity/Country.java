@@ -1,5 +1,6 @@
 package com.ae.league.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -20,7 +21,8 @@ public class Country implements Serializable {
 
     private String name;
 
-    @OneToMany(mappedBy = "country", fetch = FetchType.LAZY)
+    @JsonIgnore
+    @OneToMany(mappedBy = "country", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<City> city;
 
 }
