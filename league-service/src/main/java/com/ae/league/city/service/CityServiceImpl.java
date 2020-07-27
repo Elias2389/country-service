@@ -21,6 +21,6 @@ public class CityServiceImpl implements CityService {
     @Override
     @Transactional(readOnly = true)
     public List<City> getAllCities() {
-        return (List<City>) repository.findAll();
+        return repository.findAll();
     }
 }
