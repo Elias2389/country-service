@@ -18,6 +18,12 @@ public interface CityService {
   public City getCityById(Long id);
 
   /**
+   * @param name of city to get
+   * @return city founded
+   */
+  public City getCityByName(String name);
+
+  /**
    * @param city to make creation
    * @return city created
    */
