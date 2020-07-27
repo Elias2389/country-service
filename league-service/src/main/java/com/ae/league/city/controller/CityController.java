@@ -5,9 +5,7 @@ import com.ae.league.entity.City;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,4 +25,34 @@ public class CityController {
         List<City> cities = service.getAllCities();
         return new ResponseEntity<>(cities, HttpStatus.OK);
     }
+
+   @GetMapping("/id/{id}")
+    public ResponseEntity<City> getCityById(@PathVariable("id") Long id) {
+        City city = service.getCityById(id);
+        return new ResponseEntity<>(city, HttpStatus.OK);
+    }
+
+    @GetMapping("/name/{name}")
+    public ResponseEntity<City> getCityByName(@PathVariable("name") String name) {
+        City city = service.getCityByName(name);
+        return new ResponseEntity<>(city, HttpStatus.OK);
+    }
+
+    @PostMapping
+    public ResponseEntity<City> createCity(@RequestBody City city) {
+        City cityCreated = service.createCity(city);
+        return new ResponseEntity<>(cityCreated, HttpStatus.OK);
+    }
+
+    @PutMapping
+    public ResponseEntity<City> updateCity(@RequestBody City city) {
+        City cityUpdated = service.updateCity(city);
+        return new ResponseEntity<>(cityUpdated, HttpStatus.OK);
+    }
+
+    @DeleteMapping()
+    public void deleteCity(Long id) {
+        service.deleteCity(id);
+    }
+
 }

@@ -39,7 +39,10 @@ public class CityServiceImpl implements CityService {
         if (getCityByName(city.getName()) != null) {
             return getCityByName(city.getName());
         }
-        return repository.save(city);
+        City newCity = City.builder()
+                .name(city.getName())
+                .build();
+        return repository.save(newCity);
     }
 
     @Override
