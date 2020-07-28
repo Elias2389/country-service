@@ -63,7 +63,6 @@ class CityServiceImplTest {
         Assertions.assertThat(cityService.getCityByName("Madrid")).isEqualTo(getCity());
     }
 
-
     private List<City> getMockCities() {
         List<City> cities = new ArrayList<>();
         cities.add(getCity());
