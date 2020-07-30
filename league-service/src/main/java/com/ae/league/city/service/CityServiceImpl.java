@@ -25,16 +25,19 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
+    @Transactional
     public City getCityById(Long id) {
         return repository.findById(id).orElse(null);
     }
 
     @Override
+    @Transactional
     public City getCityByName(String name) {
         return repository.findByName(name);
     }
 
     @Override
+    @Transactional
     public City createCity(City city) {
         if (getCityByName(city.getName()) != null) {
             return getCityByName(city.getName());
@@ -46,6 +49,7 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
+    @Transactional
     public City updateCity(City city) {
         if (getCityByName(city.getName()) != null) {
             City cityToUpdate = City.builder()
@@ -57,6 +61,7 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
+    @Transactional
     public void deleteCity(Long id) {
         repository.deleteById(id);
     }
