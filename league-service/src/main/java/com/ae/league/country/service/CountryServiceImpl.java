@@ -53,12 +53,18 @@ public class CountryServiceImpl implements CountryService {
     @Override
     @Transactional
     public Country updateCountry(Country country) {
+        if (getCountryByName(country.getName()) != null) {
+            Country updateCountry = Country.builder()
+                    .name(country.getName())
+                    .build();
+            return repository.save(updateCountry);
+        }
         return null;
     }
 
     @Override
     @Transactional
     public void deleteCountry(Long id) {
-
+        repository.deleteById(id);
     }
 }
