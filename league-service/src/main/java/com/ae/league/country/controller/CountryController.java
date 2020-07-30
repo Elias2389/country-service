@@ -4,9 +4,9 @@ import com.ae.league.country.service.CountryService;
 
 import com.ae.league.entity.Country;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,46 +24,61 @@ public class CountryController {
     /**
      *  @return list of countries
      *  */
+    @GetMapping
     public ResponseEntity<List<Country> > getAllCities() {
-        return null;
+        return new ResponseEntity<>(service.getAllCities(), HttpStatus.OK);
     }
 
     /**
      * @param id of Country to get
      * @return Country founded
      */
-    public ResponseEntity<Country> getCountryById(Long id) {
-        return null;
+    @GetMapping("/id/{id}")
+    public ResponseEntity<Country> getCountryById(@PathVariable("id") Long id) {
+        return new ResponseEntity<>(service.getCountryById(id), HttpStatus.OK);
     }
 
     /**
      * @param name of Country to get
      * @return Country founded
      */
-    public ResponseEntity<Country> getCountryByName(String name) {
-        return null;
+    @GetMapping("/name/{name}")
+    public ResponseEntity<Country> getCountryByName(@PathVariable("name") String name) {
+        return new ResponseEntity<>(service.getCountryByName(name), HttpStatus.OK);
     }
 
     /**
      * @param country to make creation
      * @return Country created
      */
-    public ResponseEntity<Country> createCountry(Country country) {
-        return null;
+    @PostMapping
+    public ResponseEntity<Country> createCountry(@RequestBody Country country) {
+        Country newCountry = Country.builder()
+                .name(country.getName())
+                .city(country.getCity())
+                .build();
+
+        return new ResponseEntity<>(service.createCountry(newCountry), HttpStatus.OK);
     }
 
     /**
      * @param country to update
      * @return Country updated
      */
-    public ResponseEntity<Country> updateCountry(Country country) {
-        return null;
+    @PutMapping
+    public ResponseEntity<Country> updateCountry(@RequestBody Country country) {
+        Country updateCountry = Country.builder()
+                .name(country.getName())
+                .city(country.getCity())
+                .build();
+
+        return new ResponseEntity<>(service.updateCountry(updateCountry), HttpStatus.OK);
     }
 
     /**
      *  @param id of Country to delete
      *  */
     public void deleteCountry(Long id) {
-
+        service.deleteCountry(id);
     }
 }
