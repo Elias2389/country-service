@@ -9,7 +9,7 @@ public interface CountryService {
     /**
      *  @return list of countries
      *  */
-    public List<Country> getAllCities();
+    public List<Country> getAllCountries();
 
     /**
      * @param id of Country to get
@@ -22,6 +22,12 @@ public interface CountryService {
      * @return Country founded
      */
     public Country getCountryByName(String name);
+
+    /**
+     * @param code of Country to get
+     * @return Country founded
+     */
+    public Country getCountryByCode(String code);
 
     /**
      * @param country to make creation

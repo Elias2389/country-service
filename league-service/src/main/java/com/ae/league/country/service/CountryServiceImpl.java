@@ -20,7 +20,7 @@ public class CountryServiceImpl implements CountryService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<Country> getAllCities() {
+    public List<Country> getAllCountries() {
         return repository.findAll();
     }
 
@@ -37,17 +37,18 @@ public class CountryServiceImpl implements CountryService {
     }
 
     @Override
+    public Country getCountryByCode(String code) {
+        Country country = repository.findByCode(code);
+        return country;
+    }
+
+    @Override
     @Transactional
     public Country createCountry(Country country) {
         if (getCountryByName(country.getName()) != null) {
             return getCountryByName(country.getName());
         }
-        Country newCountry = Country.builder()
-                .city(country.getCity())
-                .name(country.getName())
-                .build();
-
-        return repository.save(newCountry);
+        return repository.save(country);
     }
 
     @Override

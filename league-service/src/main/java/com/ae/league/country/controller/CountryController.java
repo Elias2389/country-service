@@ -26,7 +26,7 @@ public class CountryController {
      *  */
     @GetMapping
     public ResponseEntity<List<Country> > getAllCities() {
-        return new ResponseEntity<>(service.getAllCities(), HttpStatus.OK);
+        return new ResponseEntity<>(service.getAllCountries(), HttpStatus.OK);
     }
 
     /**
@@ -48,6 +48,15 @@ public class CountryController {
     }
 
     /**
+     * @param code of Country to get
+     * @return Country founded
+     */
+    @GetMapping("/code/{code}")
+    public ResponseEntity<Country> getCountryByCode(@PathVariable("code") String code) {
+        return new ResponseEntity<>(service.getCountryByCode(code), HttpStatus.OK);
+    }
+
+    /**
      * @param country to make creation
      * @return Country created
      */
@@ -55,7 +64,7 @@ public class CountryController {
     public ResponseEntity<Country> createCountry(@RequestBody Country country) {
         Country newCountry = Country.builder()
                 .name(country.getName())
-                .city(country.getCity())
+                .cities(country.getCities())
                 .build();
 
         return new ResponseEntity<>(service.createCountry(newCountry), HttpStatus.OK);
@@ -69,7 +78,7 @@ public class CountryController {
     public ResponseEntity<Country> updateCountry(@RequestBody Country country) {
         Country updateCountry = Country.builder()
                 .name(country.getName())
-                .city(country.getCity())
+                .cities(country.getCities())
                 .build();
 
         return new ResponseEntity<>(service.updateCountry(updateCountry), HttpStatus.OK);

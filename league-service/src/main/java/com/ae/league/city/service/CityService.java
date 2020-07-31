@@ -24,6 +24,12 @@ public interface CityService {
   public City getCityByName(String name);
 
   /**
+   * @param code of country
+   * @return city list of cities
+   */
+  public List<City> getCityByCountryCode(String code);
+
+  /**
    * @param city to make creation
    * @return city created
    */

@@ -11,4 +11,10 @@ public interface CountryRepository extends JpaRepository<Country, Long> {
    * @return country found
    */
   public Country findByName(String name);
+
+  /**
+   * @param code of country to find
+   * @return country found
+   */
+  public Country findByCode(String code);
 }
