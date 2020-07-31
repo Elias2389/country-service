@@ -38,6 +38,12 @@ public class CityServiceImpl implements CityService {
 
     @Override
     @Transactional
+    public List<City> getCityByCountryCode(String code) {
+        return repository.findByCountryCode(code);
+    }
+
+    @Override
+    @Transactional
     public City createCity(City city) {
         if (getCityByName(city.getName()) != null) {
             return getCityByName(city.getName());

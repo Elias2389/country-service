@@ -38,6 +38,12 @@ public class CityController {
         return new ResponseEntity<>(city, HttpStatus.OK);
     }
 
+    @GetMapping("/country/{code}")
+    public ResponseEntity<List<City>> getCityByCountryCode(@PathVariable("code") String code) {
+        List<City> cities = service.getCityByCountryCode(code);
+        return new ResponseEntity<>(cities, HttpStatus.OK);
+    }
+
     @PostMapping
     public ResponseEntity<City> createCity(@RequestBody City city) {
         City cityCreated = service.createCity(city);
