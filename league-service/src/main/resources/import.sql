@@ -1,7 +1,7 @@
-INSERT INTO countries (name) VALUES ('España')
-INSERT INTO countries (name) VALUES ('Holanda')
-INSERT INTO countries (name) VALUES ('Francia')
-INSERT INTO countries (name) VALUES ('Alemania')
+INSERT INTO countries (name, code) VALUES ('Spain', 'es')
+INSERT INTO countries (name, code) VALUES ('Netherland', 'nl')
+INSERT INTO countries (name, code) VALUES ('France', 'fr')
+INSERT INTO countries (name, code) VALUES ('Germany', 'de')
 
 INSERT INTO cities (name, id_country) VALUES ('Madrid', 1)
 INSERT INTO cities (name, id_country) VALUES ('Barcelona', 1)

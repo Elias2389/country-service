@@ -19,6 +19,8 @@ public class Country implements Serializable {
     @Column(name = "id_country")
     private Long id;
 
+    private String code;
+
     private String name;
 
     @JsonIgnore
