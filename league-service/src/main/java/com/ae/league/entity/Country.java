@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 
@@ -23,8 +24,8 @@ public class Country implements Serializable {
 
     private String name;
 
-    @JsonIgnore
+    @ToString.Exclude
     @OneToMany(mappedBy = "country", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<City> city;
+    private List<City> cities;
 
 }

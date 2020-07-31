@@ -1,6 +1,7 @@
 package com.ae.league.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -23,7 +24,17 @@ public class City implements Serializable {
 
     private String name;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "id_country")
     private Country country;
+
+    @Override
+    public String toString() {
+        return "City{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", country=" + country +
+                '}';
+    }
 }
