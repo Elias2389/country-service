@@ -20,43 +20,71 @@ public class CityController {
         this.service = service;
     }
 
-    @GetMapping
-    public ResponseEntity<List<City>> getAllCities() {
+  /**
+   * Fin All cities
+   * @return cities
+   * */
+  @GetMapping
+  public ResponseEntity<List<City>> getAllCities() {
         List<City> cities = service.getAllCities();
         return new ResponseEntity<>(cities, HttpStatus.OK);
     }
 
-   @GetMapping("/id/{id}")
-    public ResponseEntity<City> getCityById(@PathVariable("id") Long id) {
+  /**
+   * @param id of city to find
+   * @return city found
+   */
+  @GetMapping("/id/{id}")
+  public ResponseEntity<City> getCityById(@PathVariable("id") Long id) {
         City city = service.getCityById(id);
         return new ResponseEntity<>(city, HttpStatus.OK);
     }
 
-    @GetMapping("/name/{name}")
-    public ResponseEntity<City> getCityByName(@PathVariable("name") String name) {
+  /**
+   * @param name of city to find
+   * @return city found
+   */
+  @GetMapping("/name/{name}")
+  public ResponseEntity<City> getCityByName(@PathVariable("name") String name) {
         City city = service.getCityByName(name);
         return new ResponseEntity<>(city, HttpStatus.OK);
     }
 
-    @GetMapping("/country/{code}")
-    public ResponseEntity<List<City>> getCityByCountryCode(@PathVariable("code") String code) {
+  /**
+   * @param code to filter
+   * @return cities filtered
+   */
+  @GetMapping("/country/{code}")
+  public ResponseEntity<List<City>> getCityByCountryCode(@PathVariable("code") String code) {
         List<City> cities = service.getCityByCountryCode(code);
         return new ResponseEntity<>(cities, HttpStatus.OK);
     }
 
-    @PostMapping
-    public ResponseEntity<City> createCity(@RequestBody City city) {
+  /**
+   * @param city to create
+   * @return city created
+   */
+  @PostMapping
+  public ResponseEntity<City> createCity(@RequestBody City city) {
         City cityCreated = service.createCity(city);
         return new ResponseEntity<>(cityCreated, HttpStatus.OK);
     }
 
-    @PutMapping
-    public ResponseEntity<City> updateCity(@RequestBody City city) {
+  /**
+   * @param city to update
+   * @return city updated
+   */
+  @PutMapping
+  public ResponseEntity<City> updateCity(@RequestBody City city) {
         City cityUpdated = service.updateCity(city);
         return new ResponseEntity<>(cityUpdated, HttpStatus.OK);
     }
 
-    @DeleteMapping()
+      /**
+       * Delete City
+       *  @param id of city to delete
+       *  */
+  @DeleteMapping
     public void deleteCity(Long id) {
         service.deleteCity(id);
     }
