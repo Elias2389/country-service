@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @SpringBootTest
-class CityEntityServiceImplTest {
+class CityResponseEntityServiceImplTest {
 
     @Mock
     private CityRepository repository;

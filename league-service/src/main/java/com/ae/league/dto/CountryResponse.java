@@ -5,9 +5,9 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class Country {
+public class CountryResponse {
     private Long id;
     private String code;
     private String name;
-    private List<City> cities;
+    private List<CityResponse> cities;
 }
