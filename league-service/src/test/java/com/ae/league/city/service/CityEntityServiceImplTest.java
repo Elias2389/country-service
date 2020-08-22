@@ -1,8 +1,8 @@
 package com.ae.league.city.service;
 
 import com.ae.league.city.repository.CityRepository;
-import com.ae.league.entity.City;
-import com.ae.league.entity.Country;
+import com.ae.league.entity.CityEntity;
+import com.ae.league.entity.CountryEntity;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,18 +15,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
-class CityServiceImplTest {
+class CityEntityServiceImplTest {
 
     @Mock
     private CityRepository repository;
 
     private CityService cityService;
-    private List<City> cities;
-    private City city;
-    private City city2;
+    private List<CityEntity> cities;
+    private CityEntity city;
+    private CityEntity city2;
 
     @BeforeEach
     public void setup() {
@@ -63,22 +61,22 @@ class CityServiceImplTest {
         Assertions.assertThat(cityService.getCityByName("Madrid")).isEqualTo(getCity());
     }
 
-    private List<City> getMockCities() {
-        List<City> cities = new ArrayList<>();
+    private List<CityEntity> getMockCities() {
+        List<CityEntity> cities = new ArrayList<>();
         cities.add(getCity());
         cities.add(getCity2());
 
         return cities;
     }
 
-    private City getCity() {
-        Country country = Country.builder().id(1L).name("Spain").build();
-        return City.builder().id(1L).name("Madrid").country(country).build();
+    private CityEntity getCity() {
+        CountryEntity country = CountryEntity.builder().id(1L).name("Spain").build();
+        return CityEntity.builder().id(1L).name("Madrid").country(country).build();
     }
 
-    private City getCity2() {
-        Country country2 = Country.builder().id(2L).name("Germany").build();
-        return City.builder().id(2L).name("Berlin").country(country2).build();
+    private CityEntity getCity2() {
+        CountryEntity country2 = CountryEntity.builder().id(2L).name("Germany").build();
+        return CityEntity.builder().id(2L).name("Berlin").country(country2).build();
 
     }
 }

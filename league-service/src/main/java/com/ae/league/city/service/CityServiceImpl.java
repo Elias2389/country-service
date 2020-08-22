@@ -1,7 +1,7 @@
 package com.ae.league.city.service;
 
 import com.ae.league.city.repository.CityRepository;
-import com.ae.league.entity.City;
+import com.ae.league.entity.CityEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,35 +20,35 @@ public class CityServiceImpl implements CityService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<City> getAllCities() {
+    public List<CityEntity> getAllCities() {
         return repository.findAll();
     }
 
     @Override
     @Transactional
-    public City getCityById(Long id) {
+    public CityEntity getCityById(Long id) {
         return repository.findById(id).orElse(null);
     }
 
     @Override
     @Transactional
-    public City getCityByName(String name) {
+    public CityEntity getCityByName(String name) {
         return repository.findByName(name);
     }
 
     @Override
     @Transactional
-    public List<City> getCityByCountryCode(String code) {
+    public List<CityEntity> getCityByCountryCode(String code) {
         return repository.findByCountryCode(code);
     }
 
     @Override
     @Transactional
-    public City createCity(City city) {
+    public CityEntity createCity(CityEntity city) {
         if (getCityByName(city.getName()) != null) {
             return getCityByName(city.getName());
         }
-        City newCity = City.builder()
+        CityEntity newCity = CityEntity.builder()
                 .name(city.getName())
                 .build();
         return repository.save(newCity);
@@ -56,9 +56,9 @@ public class CityServiceImpl implements CityService {
 
     @Override
     @Transactional
-    public City updateCity(City city) {
+    public CityEntity updateCity(CityEntity city) {
         if (getCityByName(city.getName()) != null) {
-            City cityToUpdate = City.builder()
+            CityEntity cityToUpdate = CityEntity.builder()
                     .name(city.getName())
                     .build();
             return repository.save(cityToUpdate);
