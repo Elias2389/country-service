@@ -1,7 +1,7 @@
 package com.ae.league.city.controller;
 
 import com.ae.league.city.service.CityService;
-import com.ae.league.entity.City;
+import com.ae.league.entity.CityEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,8 +25,8 @@ public class CityController {
    * @return cities
    * */
   @GetMapping
-  public ResponseEntity<List<City>> getAllCities() {
-        List<City> cities = service.getAllCities();
+  public ResponseEntity<List<CityEntity>> getAllCities() {
+        List<CityEntity> cities = service.getAllCities();
         return new ResponseEntity<>(cities, HttpStatus.OK);
     }
 
@@ -35,8 +35,8 @@ public class CityController {
    * @return city found
    */
   @GetMapping("/id/{id}")
-  public ResponseEntity<City> getCityById(@PathVariable("id") Long id) {
-        City city = service.getCityById(id);
+  public ResponseEntity<CityEntity> getCityById(@PathVariable("id") Long id) {
+        CityEntity city = service.getCityById(id);
         return new ResponseEntity<>(city, HttpStatus.OK);
     }
 
@@ -45,8 +45,8 @@ public class CityController {
    * @return city found
    */
   @GetMapping("/name/{name}")
-  public ResponseEntity<City> getCityByName(@PathVariable("name") String name) {
-        City city = service.getCityByName(name);
+  public ResponseEntity<CityEntity> getCityByName(@PathVariable("name") String name) {
+        CityEntity city = service.getCityByName(name);
         return new ResponseEntity<>(city, HttpStatus.OK);
     }
 
@@ -55,8 +55,8 @@ public class CityController {
    * @return cities filtered
    */
   @GetMapping("/country/{code}")
-  public ResponseEntity<List<City>> getCityByCountryCode(@PathVariable("code") String code) {
-        List<City> cities = service.getCityByCountryCode(code);
+  public ResponseEntity<List<CityEntity>> getCityByCountryCode(@PathVariable("code") String code) {
+        List<CityEntity> cities = service.getCityByCountryCode(code);
         return new ResponseEntity<>(cities, HttpStatus.OK);
     }
 
@@ -65,8 +65,8 @@ public class CityController {
    * @return city created
    */
   @PostMapping
-  public ResponseEntity<City> createCity(@RequestBody City city) {
-        City cityCreated = service.createCity(city);
+  public ResponseEntity<CityEntity> createCity(@RequestBody CityEntity city) {
+        CityEntity cityCreated = service.createCity(city);
         return new ResponseEntity<>(cityCreated, HttpStatus.OK);
     }
 
@@ -75,8 +75,8 @@ public class CityController {
    * @return city updated
    */
   @PutMapping
-  public ResponseEntity<City> updateCity(@RequestBody City city) {
-        City cityUpdated = service.updateCity(city);
+  public ResponseEntity<CityEntity> updateCity(@RequestBody CityEntity city) {
+        CityEntity cityUpdated = service.updateCity(city);
         return new ResponseEntity<>(cityUpdated, HttpStatus.OK);
     }
 

@@ -15,7 +15,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Getter
 @Setter
-public class City implements Serializable {
+public class CityEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,7 +27,7 @@ public class City implements Serializable {
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "id_country")
-    private Country country;
+    private CountryEntity country;
 
     @Override
     public String toString() {

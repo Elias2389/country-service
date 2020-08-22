@@ -2,7 +2,7 @@ package com.ae.league.country.controller;
 
 import com.ae.league.country.service.CountryService;
 
-import com.ae.league.entity.Country;
+import com.ae.league.entity.CountryEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +25,7 @@ public class CountryController {
      *  @return list of countries
      *  */
     @GetMapping
-    public ResponseEntity<List<Country> > getAllCities() {
+    public ResponseEntity<List<CountryEntity> > getAllCities() {
         return new ResponseEntity<>(service.getAllCountries(), HttpStatus.OK);
     }
 
@@ -34,7 +34,7 @@ public class CountryController {
      * @return Country founded
      */
     @GetMapping("/id/{id}")
-    public ResponseEntity<Country> getCountryById(@PathVariable("id") Long id) {
+    public ResponseEntity<CountryEntity> getCountryById(@PathVariable("id") Long id) {
         return new ResponseEntity<>(service.getCountryById(id), HttpStatus.OK);
     }
 
@@ -43,7 +43,7 @@ public class CountryController {
      * @return Country founded
      */
     @GetMapping("/name/{name}")
-    public ResponseEntity<Country> getCountryByName(@PathVariable("name") String name) {
+    public ResponseEntity<CountryEntity> getCountryByName(@PathVariable("name") String name) {
         return new ResponseEntity<>(service.getCountryByName(name), HttpStatus.OK);
     }
 
@@ -52,7 +52,7 @@ public class CountryController {
      * @return Country founded
      */
     @GetMapping("/code/{code}")
-    public ResponseEntity<Country> getCountryByCode(@PathVariable("code") String code) {
+    public ResponseEntity<CountryEntity> getCountryByCode(@PathVariable("code") String code) {
         return new ResponseEntity<>(service.getCountryByCode(code), HttpStatus.OK);
     }
 
@@ -61,8 +61,8 @@ public class CountryController {
      * @return Country created
      */
     @PostMapping
-    public ResponseEntity<Country> createCountry(@RequestBody Country country) {
-        Country newCountry = Country.builder()
+    public ResponseEntity<CountryEntity> createCountry(@RequestBody CountryEntity country) {
+        CountryEntity newCountry = CountryEntity.builder()
                 .name(country.getName())
                 .cities(country.getCities())
                 .build();
@@ -75,8 +75,8 @@ public class CountryController {
      * @return Country updated
      */
     @PutMapping
-    public ResponseEntity<Country> updateCountry(@RequestBody Country country) {
-        Country updateCountry = Country.builder()
+    public ResponseEntity<CountryEntity> updateCountry(@RequestBody CountryEntity country) {
+        CountryEntity updateCountry = CountryEntity.builder()
                 .name(country.getName())
                 .cities(country.getCities())
                 .build();

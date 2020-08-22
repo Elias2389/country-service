@@ -1,7 +1,7 @@
 package com.ae.league.country.service;
 
 import com.ae.league.country.repository.CountryRepository;
-import com.ae.league.entity.Country;
+import com.ae.league.entity.CountryEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,31 +20,31 @@ public class CountryServiceImpl implements CountryService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<Country> getAllCountries() {
+    public List<CountryEntity> getAllCountries() {
         return repository.findAll();
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Country getCountryById(Long id) {
+    public CountryEntity getCountryById(Long id) {
         return repository.findById(id).orElse(null);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Country getCountryByName(String name) {
+    public CountryEntity getCountryByName(String name) {
         return repository.findByName(name);
     }
 
     @Override
-    public Country getCountryByCode(String code) {
-        Country country = repository.findByCode(code);
+    public CountryEntity getCountryByCode(String code) {
+        CountryEntity country = repository.findByCode(code);
         return country;
     }
 
     @Override
     @Transactional
-    public Country createCountry(Country country) {
+    public CountryEntity createCountry(CountryEntity country) {
         if (getCountryByName(country.getName()) != null) {
             return getCountryByName(country.getName());
         }
@@ -53,9 +53,9 @@ public class CountryServiceImpl implements CountryService {
 
     @Override
     @Transactional
-    public Country updateCountry(Country country) {
+    public CountryEntity updateCountry(CountryEntity country) {
         if (getCountryByName(country.getName()) != null) {
-            Country updateCountry = Country.builder()
+            CountryEntity updateCountry = CountryEntity.builder()
                     .name(country.getName())
                     .build();
             return repository.save(updateCountry);
