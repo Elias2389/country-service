@@ -4,8 +4,8 @@ package com.ae.league.dto;
 import lombok.Data;
 
 @Data
-public class City {
+public class CityResponse {
     private Long id;
     private String name;
-    private Country country;
+    private CountryResponse countryResponse;
 }
