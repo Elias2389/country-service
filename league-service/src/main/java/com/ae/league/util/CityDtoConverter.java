@@ -38,4 +38,5 @@ public class CityDtoConverter {
                 .map(this::converterCityToDto)
                 .collect(Collectors.toList());
     }
+
 }
