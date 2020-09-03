@@ -39,9 +39,9 @@ public class CityController {
    * @return city found
    */
   @GetMapping("/id/{id}")
-  public ResponseEntity<CityEntity> getCityById(@PathVariable("id") Long id) {
+  public ResponseEntity<CityResponse> getCityById(@PathVariable("id") Long id) {
         CityEntity city = service.getCityById(id);
-        return new ResponseEntity<>(city, HttpStatus.OK);
+        return new ResponseEntity<>(cityDtoConverter.converterCityToDto(city), HttpStatus.OK);
     }
 
   /**
@@ -49,9 +49,9 @@ public class CityController {
    * @return city found
    */
   @GetMapping("/name/{name}")
-  public ResponseEntity<CityEntity> getCityByName(@PathVariable("name") String name) {
+  public ResponseEntity<CityResponse> getCityByName(@PathVariable("name") String name) {
         CityEntity city = service.getCityByName(name);
-        return new ResponseEntity<>(city, HttpStatus.OK);
+        return new ResponseEntity<>(cityDtoConverter.converterCityToDto(city), HttpStatus.OK);
     }
 
   /**
@@ -59,9 +59,9 @@ public class CityController {
    * @return cities filtered
    */
   @GetMapping("/country/{code}")
-  public ResponseEntity<List<CityEntity>> getCityByCountryCode(@PathVariable("code") String code) {
+  public ResponseEntity<List<CityResponse>> getCityByCountryCode(@PathVariable("code") String code) {
         List<CityEntity> cities = service.getCityByCountryCode(code);
-        return new ResponseEntity<>(cities, HttpStatus.OK);
+        return new ResponseEntity<>(cityDtoConverter.converterCityToDto(cities), HttpStatus.OK);
     }
 
   /**
@@ -69,9 +69,9 @@ public class CityController {
    * @return city created
    */
   @PostMapping
-  public ResponseEntity<CityEntity> createCity(@RequestBody CityEntity city) {
+  public ResponseEntity<CityResponse> createCity(@RequestBody CityEntity city) {
         CityEntity cityCreated = service.createCity(city);
-        return new ResponseEntity<>(cityCreated, HttpStatus.CREATED);
+        return new ResponseEntity<>(cityDtoConverter.converterCityToDto(cityCreated), HttpStatus.CREATED);
     }
 
   /**
