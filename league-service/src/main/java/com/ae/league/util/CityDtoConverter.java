@@ -1,6 +1,7 @@
 package com.ae.league.util;
 
 import com.ae.league.dto.CityResponse;
+import com.ae.league.dto.CountryResponse;
 import com.ae.league.entity.CityEntity;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +14,12 @@ import java.util.stream.Collectors;
 public class CityDtoConverter {
 
     private final ModelMapper modelMapper;
+    private final CountryDtoConverter countryDtoConverter;
 
     @Autowired
-    public CityDtoConverter(ModelMapper modelMapper) {
+    public CityDtoConverter(ModelMapper modelMapper, CountryDtoConverter countryDtoConverter) {
         this.modelMapper = modelMapper;
+        this.countryDtoConverter = countryDtoConverter;
     }
 
     /**

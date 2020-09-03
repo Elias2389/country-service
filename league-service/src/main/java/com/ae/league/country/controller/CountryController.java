@@ -2,7 +2,9 @@ package com.ae.league.country.controller;
 
 import com.ae.league.country.service.CountryService;
 
+import com.ae.league.dto.CountryResponse;
 import com.ae.league.entity.CountryEntity;
+import com.ae.league.util.CountryDtoConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,18 +17,21 @@ import java.util.List;
 public class CountryController {
 
     private final CountryService service;
+    private final CountryDtoConverter converter;
 
     @Autowired
-    public CountryController(CountryService service) {
+    public CountryController(CountryService service, CountryDtoConverter converter) {
         this.service = service;
+        this.converter = converter;
     }
 
     /**
      *  @return list of countries
      *  */
     @GetMapping
-    public ResponseEntity<List<CountryEntity> > getAllCities() {
-        return new ResponseEntity<>(service.getAllCountries(), HttpStatus.OK);
+    public ResponseEntity<List<CountryResponse> > getAllCities() {
+        List<CountryEntity> countries = service.getAllCountries();
+        return new ResponseEntity<>(converter.converterCountryToDto(countries), HttpStatus.OK);
     }
 
     /**
