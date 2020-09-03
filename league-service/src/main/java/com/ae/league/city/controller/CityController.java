@@ -1,7 +1,9 @@
 package com.ae.league.city.controller;
 
 import com.ae.league.city.service.CityService;
+import com.ae.league.dto.CityResponse;
 import com.ae.league.entity.CityEntity;
+import com.ae.league.util.CityDtoConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,10 +16,12 @@ import java.util.List;
 public class CityController {
 
     private final CityService service;
+    private final CityDtoConverter cityDtoConverter;
 
     @Autowired
-    public CityController(CityService service) {
+    public CityController(CityService service, CityDtoConverter cityDtoConverter) {
         this.service = service;
+        this.cityDtoConverter = cityDtoConverter;
     }
 
   /**
@@ -25,9 +29,9 @@ public class CityController {
    * @return cities
    * */
   @GetMapping
-  public ResponseEntity<List<CityEntity>> getAllCities() {
+  public ResponseEntity<List<CityResponse>> getAllCities() {
         List<CityEntity> cities = service.getAllCities();
-        return new ResponseEntity<>(cities, HttpStatus.OK);
+        return new ResponseEntity<>(cityDtoConverter.converterCityToDto(cities), HttpStatus.OK);
     }
 
   /**
@@ -67,7 +71,7 @@ public class CityController {
   @PostMapping
   public ResponseEntity<CityEntity> createCity(@RequestBody CityEntity city) {
         CityEntity cityCreated = service.createCity(city);
-        return new ResponseEntity<>(cityCreated, HttpStatus.OK);
+        return new ResponseEntity<>(cityCreated, HttpStatus.CREATED);
     }
 
   /**

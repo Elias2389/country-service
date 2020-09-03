@@ -70,13 +70,15 @@ class CityResponseEntityServiceImplTest {
     }
 
     private CityEntity getCity() {
-        CountryEntity country = CountryEntity.builder().id(1L).name("Spain").build();
-        return CityEntity.builder().id(1L).name("Madrid").country(country).build();
+        //CountryEntity country = CountryEntity.builder().id(1L).name("Spain").build();
+        return new CityEntity();
     }
 
     private CityEntity getCity2() {
-        CountryEntity country2 = CountryEntity.builder().id(2L).name("Germany").build();
-        return CityEntity.builder().id(2L).name("Berlin").country(country2).build();
+//        CountryEntity country2 = CountryEntity.builder().id(2L).name("Germany").build();
+//        return CityEntity.builder().id(2L).name("Berlin").country(country2).build();
+
+        return new CityEntity();
 
     }
 }

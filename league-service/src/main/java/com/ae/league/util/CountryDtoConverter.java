@@ -1,8 +1,6 @@
 package com.ae.league.util;
 
-import com.ae.league.dto.CityResponse;
 import com.ae.league.dto.CountryResponse;
-import com.ae.league.entity.CityEntity;
 import com.ae.league.entity.CountryEntity;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +24,7 @@ public class CountryDtoConverter {
     * @param countryEntity to converter
     * @return city response
     */
-    public CountryResponse converterCityToDto(CountryEntity countryEntity) {
+    public CountryResponse converterCountryToDto(CountryEntity countryEntity) {
         return modelMapper.map(countryEntity, CountryResponse.class);
     }
 
@@ -35,9 +33,9 @@ public class CountryDtoConverter {
     * @param countryEntities list
     * @return list of city response
     */
-    public List<CountryResponse> converterCityToDto(List<CountryEntity> countryEntities) {
+    public List<CountryResponse> converterCountryToDto(List<CountryEntity> countryEntities) {
         return countryEntities.stream()
-                .map(this::converterCityToDto)
+                .map(this::converterCountryToDto)
                 .collect(Collectors.toList());
     }
 
