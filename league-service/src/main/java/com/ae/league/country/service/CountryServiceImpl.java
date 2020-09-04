@@ -1,6 +1,7 @@
 package com.ae.league.country.service;
 
 import com.ae.league.country.repository.CountryRepository;
+import com.ae.league.dto.CountryRequest;
 import com.ae.league.entity.CountryEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,11 +45,16 @@ public class CountryServiceImpl implements CountryService {
 
     @Override
     @Transactional
-    public CountryEntity createCountry(CountryEntity country) {
+    public CountryEntity createCountry(CountryRequest country) {
         if (getCountryByName(country.getName()) != null) {
             return getCountryByName(country.getName());
         }
-        return repository.save(country);
+        CountryEntity countryEntity = CountryEntity.builder()
+                .code(country.getCode())
+                .name(country.getName())
+                .build();
+
+        return repository.save(countryEntity);
     }
 
     @Override
