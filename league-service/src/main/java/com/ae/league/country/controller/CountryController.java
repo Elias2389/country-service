@@ -49,8 +49,9 @@ public class CountryController {
      * @return Country founded
      */
     @GetMapping("/name/{name}")
-    public ResponseEntity<CountryEntity> getCountryByName(@PathVariable("name") String name) {
-        return new ResponseEntity<>(service.getCountryByName(name), HttpStatus.OK);
+    public ResponseEntity<CountryResponse> getCountryByName(@PathVariable("name") String name) {
+        CountryEntity country = service.getCountryByName(name);
+        return new ResponseEntity<>(converter.converterCountryToDto(country), HttpStatus.OK);
     }
 
     /**
@@ -58,8 +59,9 @@ public class CountryController {
      * @return Country founded
      */
     @GetMapping("/code/{code}")
-    public ResponseEntity<CountryEntity> getCountryByCode(@PathVariable("code") String code) {
-        return new ResponseEntity<>(service.getCountryByCode(code), HttpStatus.OK);
+    public ResponseEntity<CountryResponse> getCountryByCode(@PathVariable("code") String code) {
+        CountryEntity country = service.getCountryByCode(code);
+        return new ResponseEntity<>(converter.converterCountryToDto(country), HttpStatus.OK);
     }
 
     /**
@@ -67,13 +69,15 @@ public class CountryController {
      * @return Country created
      */
     @PostMapping
-    public ResponseEntity<CountryEntity> createCountry(@RequestBody CountryEntity country) {
+    public ResponseEntity<CountryResponse> createCountry(@RequestBody CountryEntity country) {
         CountryEntity newCountry = CountryEntity.builder()
                 .name(country.getName())
                 .cities(country.getCities())
                 .build();
 
-        return new ResponseEntity<>(service.createCountry(newCountry), HttpStatus.OK);
+        CountryEntity countryCreated = service.createCountry(newCountry);
+
+        return new ResponseEntity<>(converter.converterCountryToDto(countryCreated), HttpStatus.OK);
     }
 
     /**
@@ -81,13 +85,15 @@ public class CountryController {
      * @return Country updated
      */
     @PutMapping
-    public ResponseEntity<CountryEntity> updateCountry(@RequestBody CountryEntity country) {
+    public ResponseEntity<CountryResponse> updateCountry(@RequestBody CountryEntity country) {
         CountryEntity updateCountry = CountryEntity.builder()
                 .name(country.getName())
                 .cities(country.getCities())
                 .build();
 
-        return new ResponseEntity<>(service.updateCountry(updateCountry), HttpStatus.OK);
+        CountryEntity countryUpdated = service.updateCountry(updateCountry);
+
+        return new ResponseEntity<>(converter.converterCountryToDto(countryUpdated), HttpStatus.OK);
     }
 
     /**
