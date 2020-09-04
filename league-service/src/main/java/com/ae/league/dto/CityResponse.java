@@ -13,7 +13,6 @@ import java.io.Serializable;
 public class CityResponse implements Serializable {
     private Long id;
     private String name;
-    @JsonProperty("country")
     @JsonManagedReference
     private CountryResponse country;
 }
