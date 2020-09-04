@@ -1,11 +1,14 @@
 package com.ae.league.dto;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.sun.istack.NotNull;
-import com.sun.istack.Nullable;
+
 import lombok.Builder;
 import lombok.Data;
+import org.springframework.lang.Nullable;
 
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Data
@@ -13,9 +16,9 @@ import java.util.List;
 public class CountryRequest {
     @Nullable
     private Long id;
-    @NotNull
+    @NotBlank(message = "code is mandatory")
     private String code;
-    @NotNull
+    @NotBlank(message = "name is mandatory")
     private String name;
     @Nullable
     private List<CityRequest> cities;

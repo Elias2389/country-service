@@ -2,6 +2,7 @@ package com.ae.league.country.controller;
 
 import com.ae.league.country.service.CountryService;
 
+import com.ae.league.dto.CountryRequest;
 import com.ae.league.dto.CountryResponse;
 import com.ae.league.entity.CountryEntity;
 import com.ae.league.util.CountryDtoConverter;
@@ -10,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -69,13 +71,8 @@ public class CountryController {
      * @return Country created
      */
     @PostMapping
-    public ResponseEntity<CountryResponse> createCountry(@RequestBody CountryEntity country) {
-        CountryEntity newCountry = CountryEntity.builder()
-                .name(country.getName())
-                .cities(country.getCities())
-                .build();
-
-        CountryEntity countryCreated = service.createCountry(newCountry);
+    public ResponseEntity<CountryResponse> createCountry( @Valid @RequestBody CountryRequest country) {
+        CountryEntity countryCreated = service.createCountry(country);
 
         return new ResponseEntity<>(converter.converterCountryToDto(countryCreated), HttpStatus.OK);
     }

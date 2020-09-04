@@ -1,5 +1,6 @@
 package com.ae.league.country.service;
 
+import com.ae.league.dto.CountryRequest;
 import com.ae.league.entity.CountryEntity;
 
 import java.util.List;
@@ -33,7 +34,7 @@ public interface CountryService {
      * @param country to make creation
      * @return Country created
      */
-    public CountryEntity createCountry(CountryEntity country);
+    public CountryEntity createCountry(CountryRequest country);
 
     /**
      * @param country to update
