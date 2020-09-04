@@ -79,9 +79,9 @@ public class CityController {
    * @return city updated
    */
   @PutMapping
-  public ResponseEntity<CityEntity> updateCity(@RequestBody CityEntity city) {
+  public ResponseEntity<CityResponse> updateCity(@RequestBody CityEntity city) {
         CityEntity cityUpdated = service.updateCity(city);
-        return new ResponseEntity<>(cityUpdated, HttpStatus.OK);
+        return new ResponseEntity<>(cityDtoConverter.converterCityToDto(cityUpdated), HttpStatus.OK);
     }
 
       /**
