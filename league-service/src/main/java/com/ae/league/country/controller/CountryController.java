@@ -39,8 +39,9 @@ public class CountryController {
      * @return Country founded
      */
     @GetMapping("/id/{id}")
-    public ResponseEntity<CountryEntity> getCountryById(@PathVariable("id") Long id) {
-        return new ResponseEntity<>(service.getCountryById(id), HttpStatus.OK);
+    public ResponseEntity<CountryResponse> getCountryById(@PathVariable("id") Long id) {
+        CountryEntity country = service.getCountryById(id);
+        return new ResponseEntity<>(converter.converterCountryToDto(country), HttpStatus.OK);
     }
 
     /**
