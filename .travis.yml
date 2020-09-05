@@ -13,14 +13,16 @@ branches:
     - fix
 
 # Test & Build SpringBoot app
-script:
-  - mvn test
-  - mvn clean package
+#script:
+#  - mvn test
 
 # If the `script` job fails, it will send a failure message to Teams channel
 after_failure:
   - export TITLE="Travis:$TRAVIS_JOB_ID -- build job is failed"
   - export TEXT=[datetime]:`date`
+
+#after_success:
+#  - bash <(curl -s https://codecov.io/bash) -t
 
 notifications:
   email:
