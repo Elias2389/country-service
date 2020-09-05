@@ -12,15 +12,6 @@ branches:
     - feature
     - fix
 
-# Test & Build SpringBoot app
-script:
-  - mvn test
-  - mvn clean package
-
-# If the `script` job fails, it will send a failure message to Teams channel
-after_failure:
-  - export TITLE="Travis:$TRAVIS_JOB_ID -- build job is failed"
-  - export TEXT=[datetime]:`date`
 
 notifications:
   email:
