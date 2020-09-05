@@ -2,12 +2,14 @@ package com.ae.league.city.service;
 
 import com.ae.league.city.repository.CityRepository;
 import com.ae.league.entity.CityEntity;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Slf4j
 @Service
 public class CityServiceImpl implements CityService {
 
