@@ -6,6 +6,7 @@ import com.ae.league.dto.CountryRequest;
 import com.ae.league.dto.CountryResponse;
 import com.ae.league.entity.CountryEntity;
 import com.ae.league.util.CountryDtoConverter;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -71,7 +72,7 @@ public class CountryController {
      * @return Country created
      */
     @PostMapping
-    public ResponseEntity<CountryResponse> createCountry( @Valid @RequestBody CountryRequest country) {
+    public ResponseEntity<CountryResponse> createCountry(@Valid @RequestBody CountryRequest country) {
         CountryEntity countryCreated = service.createCountry(country);
 
         return new ResponseEntity<>(converter.converterCountryToDto(countryCreated), HttpStatus.OK);
