@@ -2,6 +2,8 @@ package com.ae.countryservice.city.service;
 
 
 import com.ae.countryservice.entity.CityEntity;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 

@@ -4,6 +4,8 @@ import com.ae.countryservice.dto.CityResponse;
 import com.ae.countryservice.entity.CityEntity;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -40,5 +42,4 @@ public class CityDtoConverter {
                 .map(this::converterCityToDto)
                 .collect(Collectors.toList());
     }
-
 }

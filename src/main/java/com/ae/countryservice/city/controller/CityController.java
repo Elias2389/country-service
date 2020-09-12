@@ -5,6 +5,8 @@ import com.ae.countryservice.dto.CityResponse;
 import com.ae.countryservice.entity.CityEntity;
 import com.ae.countryservice.util.CityDtoConverter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,8 +30,9 @@ public class CityController {
    * Fin All cities
    * @return cities
    * */
-  @GetMapping
-  public ResponseEntity<List<CityResponse>> getAllCities() {
+    @GetMapping
+    public ResponseEntity<List<CityResponse>> getAllCities(@RequestParam(required = false) Integer size,
+                                                           @RequestParam(required = false) Integer page) {
         List<CityEntity> cities = service.getAllCities();
         return new ResponseEntity<>(cityDtoConverter.converterCityToDto(cities), HttpStatus.OK);
     }
@@ -84,10 +87,10 @@ public class CityController {
         return new ResponseEntity<>(cityDtoConverter.converterCityToDto(cityUpdated), HttpStatus.OK);
     }
 
-      /**
-       * Delete City
-       *  @param id of city to delete
-       *  */
+  /**
+   * Delete City
+   *  @param id of city to delete
+   *  */
   @DeleteMapping
     public void deleteCity(Long id) {
         service.deleteCity(id);
