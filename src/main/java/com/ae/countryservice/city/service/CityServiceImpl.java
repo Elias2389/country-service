@@ -4,6 +4,8 @@ import com.ae.countryservice.city.repository.CityRepository;
 import com.ae.countryservice.entity.CityEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
