@@ -72,7 +72,6 @@ public class CountryController {
     @PostMapping
     public ResponseEntity<CountryResponse> createCountry(@Valid @RequestBody CountryRequest country) {
         CountryEntity countryCreated = service.createCountry(country);
-
         return new ResponseEntity<>(converter.converterCountryToDto(countryCreated), HttpStatus.OK);
     }
 
