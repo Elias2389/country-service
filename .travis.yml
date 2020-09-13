@@ -12,10 +12,6 @@ branches:
     - feature
     - fix
 
-install:
-  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-  - mvn cobertura:cobertura
-
 # Test & Build SpringBoot app
 #script:
 #  - mvn test
