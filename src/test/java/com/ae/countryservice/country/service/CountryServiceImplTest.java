@@ -12,6 +12,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
@@ -31,9 +34,13 @@ class CountryServiceImplTest {
     @Test
     public void shouldGetCountriesListWhenIsNotNull() {
         Mockito.when(repository.findAll()).thenReturn(CountryMockUtil.getAllCountries());
-
         Assertions.assertEquals(CountryMockUtil.getAllCountries(), countryService.getAllCountries());
+    }
 
+    @Test
+    public void shouldGetCountriesListWhenIsEmpty() {
+        Mockito.when(repository.findAll()).thenReturn(Collections.emptyList());
+        Assertions.assertEquals(Collections.emptyList(), countryService.getAllCountries());
     }
 
 
