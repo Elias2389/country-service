@@ -16,11 +16,11 @@ public final class CountryMockUtil {
         countryEntities.add(
                 getCountry()
         );
-        return null;
+        return countryEntities;
     }
 
     public static CountryEntity getCountry() {
-        return new CountryEntity(1234L, "Spain", "es", getCities());
+        return new CountryEntity(1234L, "es", "Spain", getCities());
     }
 
     public static List<CityEntity> getCities() {
