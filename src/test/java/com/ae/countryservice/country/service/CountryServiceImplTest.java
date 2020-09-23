@@ -1,6 +1,7 @@
 package com.ae.countryservice.country.service;
 
 import com.ae.countryservice.country.repository.CountryRepository;
+import com.ae.countryservice.entity.CountryEntity;
 import com.ae.countryservice.util.CountryMockUtil;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
@@ -14,6 +15,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -26,15 +28,17 @@ class CountryServiceImplTest {
     @Mock
     CountryRepository repository;
 
+    private List<CountryEntity> countries;
 
     @BeforeEach
     void setUp() {
+        countries = CountryMockUtil.getAllCountries();
     }
 
     @Test
     public void shouldGetCountriesListWhenIsNotNull() {
-        Mockito.when(repository.findAll()).thenReturn(CountryMockUtil.getAllCountries());
-        Assertions.assertEquals(CountryMockUtil.getAllCountries(), countryService.getAllCountries());
+        Mockito.when(repository.findAll()).thenReturn(countries);
+        Assertions.assertEquals(countries, countryService.getAllCountries());
     }
 
     @Test
@@ -44,7 +48,4 @@ class CountryServiceImplTest {
     }
 
 
-    @AfterEach
-    void tearDown() {
-    }
 }
