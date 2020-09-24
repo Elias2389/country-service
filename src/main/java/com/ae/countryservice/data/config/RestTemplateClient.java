@@ -1,12 +1,15 @@
 package com.ae.countryservice.data.config;
 
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestTemplate;
 
-@Component
+@Configuration
 public class RestTemplateClient {
 
-    public RestTemplateClient provideRestTemplate() {
-        return new RestTemplateClient();
+    @Bean
+    public RestTemplate provideRestTemplate() {
+        return new RestTemplate();
     }
 
 }
