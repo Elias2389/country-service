@@ -11,6 +11,5 @@ public class CountryResponse implements Serializable {
     private Long id;
     private String code;
     private String name;
-    @JsonBackReference
     private List<CityResponse> cities;
 }

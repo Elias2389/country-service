@@ -11,6 +11,4 @@ import java.io.Serializable;
 public class CityResponse implements Serializable {
     private Long id;
     private String name;
-    @JsonManagedReference
-    private CountryResponse country;
 }
