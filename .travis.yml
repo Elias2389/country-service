@@ -13,8 +13,8 @@ branches:
     - fix
 
 # Test & Build SpringBoot app
-script:
-  - ./gradlew test
+#script:
+ # - ./gradlew test
 
 # If the `script` job fails, it will send a failure message to Teams channel
 after_failure:
