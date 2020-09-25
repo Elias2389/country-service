@@ -14,7 +14,7 @@ branches:
 
 # Test & Build SpringBoot app
 #script:
- # - ./gradlew test
+  - ./gradlew test
 
 # If the `script` job fails, it will send a failure message to Teams channel
 after_failure:
@@ -24,6 +24,9 @@ after_failure:
 #after_success:
 #  - bash <(curl -s https://codecov.io/bash)  -t
 
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 
 cache:
   directories:
