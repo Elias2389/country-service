@@ -42,6 +42,8 @@ class CountryControllerTest {
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<CountryEntity> entity = new HttpEntity<>(headers);
 
-        //ResponseEntity<List<CountryResponse>> response = testClient.getForObject();
+        Mockito.when(service.getAllCountries()).thenReturn(CountryMockUtil.getAllCountries());
+
+
     }
 }
