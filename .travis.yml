@@ -22,7 +22,7 @@ after_failure:
   - export TEXT=[datetime]:`date`
 
 #after_success:
-#  - bash <(curl -s https://codecov.io/bash)  -t
+#  - bash <(curl -s https://codecov.io/bash) -t
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
