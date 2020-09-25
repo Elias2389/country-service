@@ -44,7 +44,7 @@ class CountryServiceImplTest {
     @Test
     public void shouldGetCountriesListWhenIsEmpty() {
         Mockito.when(repository.findAll()).thenReturn(Collections.emptyList());
-        Assertions.assertNotEquals(Collections.emptyList(), countryService.getAllCountries());
+        Assertions.assertEquals(Collections.emptyList(), countryService.getAllCountries());
     }
 
 
